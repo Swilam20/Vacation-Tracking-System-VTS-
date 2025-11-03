@@ -3,5 +3,5 @@ Vacation Tracking System (VTS) will provide individual employees with the capabi
 
 ## Documentation
 - [Vision](Docs/Vision.md)
-- [Functional Requirements](Docs/Functional Requirements.md
-- [Non-Functional Requirements](Docs/Non-Functional Requirements.md)
+- [Functional Requirements](Docs/Functional-Requirements.md)
+- [Non-Functional Requirements](Docs/Non-Functional-Requirements.md)
