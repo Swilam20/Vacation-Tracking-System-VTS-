@@ -1,70 +1,74 @@
 ```mermaid
 erDiagram
-    EMPLOYEE ||--o{ VACATIONREQUEST : submits
-    EMPLOYEE ||--o{ TIMEBALANCE : has
-    EMPLOYEE ||--o{ NOTIFICATION : receives
-    EMPLOYEE ||--o{ AUDITLOG : performs
-    EMPLOYEE ||--o{ VACATIONREQUEST : approves
-
-    VACATIONCATEGORY ||--o{ VACATIONREQUEST : "categorized as"
-    VACATIONCATEGORY ||--o{ TIMEBALANCE : "tracked by"
-
-    VACATIONREQUEST ||--o{ NOTIFICATION : triggers
-    VACATIONREQUEST ||--o{ AUDITLOG : recorded_in
-
     EMPLOYEE {
-        int employee_id PK
-        string name
-        string email
-        string role
-        string department
-        int manager_id FK
-    }
-
-    VACATIONREQUEST {
-        int request_id PK
-        int employee_id FK
-        int manager_id FK
-        int category_id FK
-        string title
-        string description
-        date start_date
-        date end_date
-        string status
-        date creation_date
-        date last_modified_date
+        int Employee_ID PK
+        string Name
+        int Managed_By FK "references EMPLOYEE.Employee_ID"
+        string Department
     }
 
     VACATIONCATEGORY {
-        int category_id PK
-        string name
-        string description
-        int max_days_per_year
+        int Category_ID PK
+        string Name
+        string Description
     }
 
     TIMEBALANCE {
-        int balance_id PK
-        int employee_id FK
-        int category_id FK
-        int total_allowed_days
-        int used_days
-        int remaining_days
+        int Balance_ID PK
+        int Employee_ID FK
+        int Category_ID FK
+        float Hours_Remaining
+    }
+
+    VACATIONREQUEST {
+        int Request_ID PK
+        string Title
+        string Description
+        int Category_ID FK
+        date From_Date
+        date To_Date
+        float Hours
+        string Status
+        string Explanation
+        datetime Request_Timestamp
+        datetime Last_Modified
+        int Employee_ID FK
+        int Manager_ID FK
     }
 
     NOTIFICATION {
-        int notification_id PK
-        int request_id FK
-        int recipient_id FK
-        string message
-        date sent_date
-        string status
+        int Notification_ID PK
+        string Type
+        datetime Timestamp
+        string Status
+        int Request_ID FK
+        int Employee_ID FK
     }
 
     AUDITLOG {
-        int log_id PK
-        int request_id FK
-        int action_by FK
-        string action
-        string notes
-        date timestamp
+        int Audit_ID PK
+        string Action
+        int Request_ID FK
+        int Employee_ID FK
+        int Manager_ID FK
+        datetime Request_Timestamp
+        datetime Processing_Timestamp
+        string Status
     }
+
+    %% Relationships
+    EMPLOYEE ||--o{ VACATIONREQUEST : "submits"
+    EMPLOYEE ||--o{ VACATIONREQUEST : "approves"
+    EMPLOYEE ||--o{ TIMEBALANCE : "has"
+    EMPLOYEE ||--o{ NOTIFICATION : "receives"
+    EMPLOYEE ||--o{ AUDITLOG : "performs"
+    EMPLOYEE ||--o{ EMPLOYEE : "manages (self-ref)"
+
+    VACATIONCATEGORY ||--o{ VACATIONREQUEST : "categorizes"
+    VACATIONCATEGORY ||--o{ TIMEBALANCE : "linked to"
+
+    TIMEBALANCE }o--|| EMPLOYEE : "belongs to"
+    TIMEBALANCE }o--|| VACATIONCATEGORY : "for category"
+
+    VACATIONREQUEST ||--o{ NOTIFICATION : "triggers"
+    VACATIONREQUEST ||--o{ AUDITLOG : "logged in"
