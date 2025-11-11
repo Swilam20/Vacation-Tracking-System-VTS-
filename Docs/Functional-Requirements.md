@@ -2,13 +2,13 @@
 
 ## The Vacation Tracking System (VTS) shall provide the following core functionalities:
 
+### Integration with HR Systems
+
+- The system shall integrate with existing HR and legacy systems to retrieve employee data and update leave balances in real time.
+
 ### Rules-Based Validation
 
 - The system shall implement a configurable rules engine to validate and verify all vacation and leave requests in accordance with company leave policies.
-
-### Leave Balance Verification
-
-- The system shall prevent employees from submitting leave requests that exceed their available leave balance.
 
 ### Manager Approval Workflow
 
@@ -37,3 +37,15 @@
 ### Leave Summary Interface
 
 - The system shall provide a user interface for employees to view their leave balances, request history, and current request status.
+
+### Single-sign-on mechanisms
+
+- The system shall be implemented as an extension to the existing company intranet portal and shall utilize the organization’s Single Sign-On (SSO) mechanism for all authentication.
+
+### Web Service Interface
+
+- The system shall expose a web service API that enables other internal systems to query employee vacation summaries and leave information.
+
+### Activity Logging
+
+- The system shall record all key transactions, including requests, approvals, rejections, and overrides, in an activity log for traceability and auditing purposes.
