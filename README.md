@@ -583,7 +583,7 @@ stateDiagram-v2
 
 ### Manager Perspective
 
--This interface shows how a manager can view and manage vacation requests for team members, with the option to act as an employee for their own requests.
+-This interface shows how a manager can view and manage vacation requests for team members, with the option to act as an employee for his own requests.
 
 <img width="637" height="397" alt="image" src="https://github.com/user-attachments/assets/838eb6fb-91ad-4d3e-a9ee-9be373328719" />
 
