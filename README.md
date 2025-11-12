@@ -555,8 +555,7 @@ sequenceDiagram
 ## State Machine Diagram For Request
 ```mermaid
 stateDiagram-v2
-    [*] --> Draft : Employee creates request
-    Draft --> Pending_Approval : Employee submits request
+    [*] --> Pending_Approval : Employee submits request
 
     Pending_Approval --> Approved : Manager approves
     Pending_Approval --> Rejected : Manager rejects
