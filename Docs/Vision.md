@@ -91,7 +91,6 @@ The following assumptions are considered true for the successful development and
 - Each employee has a unique identifier (e.g., Employee ID) in the HR database.
 - Users will access the system using modern browsers (Chrome, Edge, Firefox).
 - The organization has sufficient server resources to host the web application.
-- The total number of employees using the system will not exceed 10,000 users.
 
 ## Constraints
 
