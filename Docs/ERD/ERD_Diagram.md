@@ -20,6 +20,12 @@ erDiagram
         float Hours_Remaining
     }
 
+    REQUESTSTATUS {
+        int Status_ID PK
+        string Code "e.g., PENDING, APPROVED, REJECTED, COMPLETED"
+        string Description
+    }
+
     VACATIONREQUEST {
         int Request_ID PK
         string Title
@@ -28,7 +34,7 @@ erDiagram
         date From_Date
         date To_Date
         float Hours
-        string Status
+        int Status_ID FK "references REQUESTSTATUS.Status_ID"
         string Explanation
         datetime Request_Timestamp
         datetime Last_Modified
@@ -72,3 +78,5 @@ erDiagram
 
     VACATIONREQUEST ||--o{ NOTIFICATION : "triggers"
     VACATIONREQUEST ||--o{ AUDITLOG : "logged in"
+
+    REQUESTSTATUS ||--o{ VACATIONREQUEST : "defines status"
